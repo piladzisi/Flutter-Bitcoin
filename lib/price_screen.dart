@@ -24,15 +24,13 @@ class _PriceScreenState extends State<PriceScreen> {
       value: selectedCurrency,
       items: dropdownItems,
       onChanged: (value) {
-        setState(() {
-          selectedCurrency = value;
-          getData();
-        });
+        selectedCurrency = value;
+        getData();
       },
     );
   }
 
-  CupertinoPicker iOSPicker() {
+  NotificationListener iOSPicker() {
     List<Text> pickerItems = [];
     for (String currency in currenciesList) {
       var newItem = Text(
@@ -43,17 +41,19 @@ class _PriceScreenState extends State<PriceScreen> {
       );
       pickerItems.add(newItem);
     }
-    return CupertinoPicker(
-      backgroundColor: kDarkPrimaryColor,
-      looping: true,
-      itemExtent: 36.0,
-      onSelectedItemChanged: (selectedIndex) {
-        setState(() {
-          selectedCurrency = currenciesList[selectedIndex];
-          getData();
-        });
+    return NotificationListener<ScrollEndNotification>(
+      onNotification: (notification) {
+        getData();
       },
-      children: pickerItems,
+      child: CupertinoPicker(
+        backgroundColor: kDarkPrimaryColor,
+        looping: true,
+        itemExtent: 36.0,
+        onSelectedItemChanged: (selectedIndex) {
+          selectedCurrency = currenciesList[selectedIndex];
+        },
+        children: pickerItems,
+      ),
     );
   }
 
