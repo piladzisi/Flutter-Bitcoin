@@ -1,3 +1,8 @@
+import 'networking.dart';
+import 'constants.dart';
+import 'package:http/http.dart' as http;
+import 'price_screen.dart';
+
 const List<String> currenciesList = [
   'AUD',
   'BRL',
@@ -28,4 +33,10 @@ const List<String> cryptoList = [
   'LTC',
 ];
 
-class CoinData {}
+class CoinData {
+  Future getBitcoinData(String selectedCurrency) async {
+    String url = '$baseURL/BTC$selectedCurrency';
+    var bitcoinData = await NetworkHelper(url).getData();
+    return bitcoinData;
+  }
+}
