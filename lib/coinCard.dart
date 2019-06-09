@@ -2,12 +2,18 @@ import 'package:flutter/material.dart';
 import 'constants.dart';
 
 class CoinCard extends StatelessWidget {
-  CoinCard({this.value, this.selectedCurrency, this.coin, this.percentDay});
+  CoinCard(
+      {this.value,
+      this.selectedCurrency,
+      this.coin,
+      this.percentDay,
+      this.fullName});
 
   final String coin;
   final String selectedCurrency;
   final String value;
   final String percentDay;
+  final String fullName;
 
   @override
   Widget build(BuildContext context) {
@@ -24,21 +30,55 @@ class CoinCard extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
-              Text(
-                '$coin$selectedCurrency = $value',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 20.0,
-                  color: Colors.white,
-                ),
+              Column(
+                //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Text(
+                    '$coin$selectedCurrency',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 20.0,
+                      color: Colors.white,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 8.0,
+                  ),
+                  Text(
+                    '$fullName',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 16.0,
+                      color: kDividerColor,
+                    ),
+                  ),
+                ],
               ),
-              Text(
-                '$percentDay',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 20.0,
-                  color: Colors.white,
-                ),
+              Column(
+                //mainAxisAlignment: MainAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: <Widget>[
+                  Text(
+                    '$value',
+                    // textAlign: TextAlign.end,
+                    style: TextStyle(
+                      fontSize: 20.0,
+                      color: Colors.white,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 8.0,
+                  ),
+                  Text(
+                    '$percentDay',
+                    //: TextAlign.end,
+                    style: TextStyle(
+                      fontSize: 16.0,
+                      color: kPrimaryTextColor,
+                    ),
+                  ),
+                ],
               ),
             ],
           ),

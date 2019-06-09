@@ -11,4 +11,3 @@ const kDarkPrimaryColor = Color(0xFF00796B);
 
 String baseURL = 'https://apiv2.bitcoinaverage.com/indices/global/ticker/';
 String selectedCurrency = 'USD';
-String coin = 'BTC';

@@ -90,6 +90,7 @@ class _PriceScreenState extends State<PriceScreen> {
           selectedCurrency: selectedCurrency,
           value: isWaiting ? '' : coinValues[coin][0],
           percentDay: isWaiting ? '' : coinValues[coin][1] + '%',
+          fullName: isWaiting ? '' : coinValues[coin][2],
         ),
       );
     }
@@ -103,7 +104,7 @@ class _PriceScreenState extends State<PriceScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('🤑 Coin Ticker'),
+        title: Text('Crypto Market'),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
