@@ -1,7 +1,5 @@
 import 'networking.dart';
 import 'constants.dart';
-import 'package:http/http.dart' as http;
-import 'price_screen.dart';
 
 const List<String> currenciesList = [
   'AUD',
@@ -27,16 +25,23 @@ const List<String> currenciesList = [
   'ZAR'
 ];
 
-const List<String> cryptoList = [
-  'BTC',
-  'ETH',
-  'LTC',
-];
+const List<String> cryptoList = ['BTC', 'ETH', 'LTC', 'XRP'];
 
 class CoinData {
   Future getBitcoinData(String selectedCurrency) async {
-    String url = '$baseURL/BTC$selectedCurrency';
-    var bitcoinData = await NetworkHelper(url).getData();
-    return bitcoinData;
+    Map<String, List<dynamic>> cryptoPrices = {};
+
+    for (String coin in cryptoList) {
+      String url = '$baseURL$coin$selectedCurrency';
+      var bitcoinData = await NetworkHelper(url).getData();
+      double lastPrice = bitcoinData['last'];
+      double percentChange = bitcoinData['changes']['percent']['hour'];
+
+      cryptoPrices[coin] = [
+        lastPrice.toStringAsFixed(2),
+        percentChange.toStringAsFixed(2)
+      ];
+    }
+    return cryptoPrices;
   }
 }
