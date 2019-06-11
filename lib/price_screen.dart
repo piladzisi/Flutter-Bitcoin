@@ -112,7 +112,7 @@ class _PriceScreenState extends State<PriceScreen> {
         children: <Widget>[
           makeCards(),
           Container(
-            height: 150.0,
+            height: 120.0,
             alignment: Alignment.center,
             padding: EdgeInsets.only(bottom: 30.0),
             color: kDarkPrimaryColor,
