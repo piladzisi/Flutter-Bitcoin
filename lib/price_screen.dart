@@ -81,7 +81,7 @@ class _PriceScreenState extends State<PriceScreen> {
     }
   }
 
-  Column makeCards() {
+  Expanded makeCards() {
     List<CoinCard> cryptoCards = [];
     for (String coin in cryptoList) {
       cryptoCards.add(
@@ -94,9 +94,11 @@ class _PriceScreenState extends State<PriceScreen> {
         ),
       );
     }
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: cryptoCards,
+    return Expanded(
+      child: ListView(
+//      crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: cryptoCards,
+      ),
     );
   }
 

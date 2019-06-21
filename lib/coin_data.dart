@@ -25,7 +25,7 @@ const List<String> currenciesList = [
   'ZAR'
 ];
 
-const List<String> cryptoList = ['BTC', 'ETH', 'LTC', 'XRP'];
+const List<String> cryptoList = ['BTC', 'ETH', 'LTC', 'XRP', 'BTC', 'ETH'];
 
 class CoinData {
   Future getBitcoinData(String selectedCurrency) async {
